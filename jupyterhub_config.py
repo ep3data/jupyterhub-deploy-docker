@@ -75,8 +75,6 @@ c.CASAuthenticator.cas_service_url = 'https://jupyter.ep3data.com/hub/login'
 
 c.Authenticator.admin_users = { 'test','admin' }
 
-
-
 # Persist hub data on volume mounted inside container
 data_dir = os.environ.get('DATA_VOLUME_CONTAINER', '/data')
 
@@ -88,22 +86,3 @@ c.JupyterHub.db_url = 'postgresql://postgres:{password}@{host}/{db}'.format(
     password=os.environ['POSTGRES_PASSWORD'],
     db=os.environ['POSTGRES_DB'],
 )
-
-
-# Whitlelist users and admins
-# c.Authenticator.whitelist = whitelist = set()
-# c.Authenticator.admin_users = admin = set()
-# 
-# c.JupyterHub.admin_access = True
-# pwd = os.path.dirname(__file__)
-# with open(os.path.join(pwd, 'userlist')) as f:
-#     for line in f:
-#         if not line:
-#             continue
-#         parts = line.split()
-#         # in case of newline at the end of userlist file
-#         if len(parts) >= 1:
-#             name = parts[0]
-#             whitelist.add(name)
-#             if len(parts) > 1 and parts[1] == 'admin':
-#                 admin.add(name)
